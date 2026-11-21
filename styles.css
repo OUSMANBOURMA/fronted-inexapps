@@ -1,0 +1,234 @@
+:root {
+--bleu-neon: #00b4d8;
+--bleu-espace: #000000; /* Fond noir pour coller à l'image */
+--texte-blanc: #ffffff;
+--texte-dore: #d4af37;
+--rouge: #e63946;
+}
+
+• { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+
+body.theme-espace {
+background-color: var(--bleu-espace);
+color: var(--texte-blanc);
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+overflow-x: hidden;
+}
+
+/* ==================== VUE ACCUEIL (Image 1) ==================== */
+.interface-accueil {
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 20px;
+text-align: center;
+}
+
+.conteneur-logo {
+margin-bottom: 40px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.logo-image {
+width: 220px;
+height: auto;
+margin-bottom: 10px;
+}
+
+.titre-inex {
+font-size: 3rem;
+font-weight: 900;
+letter-spacing: 2px;
+background: linear-gradient(180deg, #ffffff 0%, #a0b4c8 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+margin-bottom: 5px;
+}
+
+.sous-titre-inex {
+font-size: 1rem;
+color: #a0b4c8;
+margin-bottom: 20px;
+}
+
+.ligne-separation {
+width: 80%;
+height: 2px;
+background: linear-gradient(90deg, transparent, var(--bleu-neon), transparent);
+margin-bottom: 20px;
+}
+
+.conteneur-choix-acces {
+display: flex;
+gap: 20px;
+justify-content: center;
+flex-wrap: wrap;
+width: 100%;
+max-width: 600px;
+}
+
+.bouton-acces-img {
+background: #000;
+border: 2px solid var(--bleu-neon);
+border-radius: 15px;
+padding: 30px 20px;
+flex: 1;
+min-width: 250px;
+cursor: pointer;
+color: white;
+transition: 0.3s;
+display: flex;
+flex-direction: column;
+align-items: center;
+box-shadow: 0 0 15px rgba(0, 180, 216, 0.1);
+}
+
+.bouton-acces-img:hover {
+transform: translateY(-5px);
+box-shadow: 0 0 25px rgba(0, 180, 216, 0.6);
+}
+
+.icone-acces-img {
+width: 50px;
+height: 50px;
+margin-bottom: 15px;
+}
+
+.bouton-acces-img h3 {
+font-size: 1.4rem;
+font-weight: 800;
+margin-bottom: 10px;
+color: #fff;
+}
+
+.bouton-acces-img p {
+font-size: 0.9rem;
+color: #a0b4c8;
+line-height: 1.4;
+}
+
+/* ==================== VUE ESPACE MEMBRE (Image 2) ==================== /
+.section-membre {
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+background: #000;
+/ L'image de la Terre en bas */
+background-image: url('https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?q=80&w=1000&auto=format&fit=crop');
+background-position: bottom center;
+background-repeat: no-repeat;
+background-size: contain;
+overflow-y: auto;
+padding: 20px;
+z-index: 100;
+}
+
+.entete-membre {
+display: flex;
+justify-content: space-between;
+align-items: center;
+max-width: 800px;
+margin: 0 auto 20px;
+padding: 10px 0;
+}
+
+.entete-membre h2 { font-size: 1.5rem; font-weight: bold; }
+
+.bouton-deconnexion {
+background: transparent;
+border: 1px solid var(--rouge);
+color: var(--rouge);
+padding: 8px 15px;
+border-radius: 8px;
+cursor: pointer;
+font-weight: bold;
+}
+
+/* Grille 2 colonnes */
+.grille-espaces {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 15px;
+max-width: 800px;
+margin: 0 auto 40px;
+}
+
+.carte-espace {
+background: #050505;
+border: 2px solid var(--bleu-neon);
+border-radius: 12px;
+padding: 20px 15px;
+cursor: pointer;
+transition: 0.3s;
+box-shadow: 0 0 10px rgba(0, 180, 216, 0.1);
+display: flex;
+flex-direction: column;
+}
+
+.carte-espace:hover {
+transform: translateY(-3px);
+box-shadow: 0 0 20px rgba(0, 180, 216, 0.5);
+background: #0a192f;
+}
+
+.icone-espace {
+width: 32px;
+height: 32px;
+margin-bottom: 10px;
+color: var(--bleu-neon);
+}
+
+.carte-espace h3 {
+font-size: 1.1rem;
+font-weight: 800;
+margin-bottom: 5px;
+text-transform: uppercase;
+color: #fff;
+}
+
+.carte-espace p {
+font-size: 0.8rem;
+color: #a0b4c8;
+line-height: 1.3;
+}
+
+/* ==================== MODALES & AUTRES VUES ==================== */
+.section-auth-sombre, .section-plateforme {
+position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+background: var(--bleu-espace);
+overflow-y: auto; padding: 20px; z-index: 100;
+}
+
+.section-auth-sombre { background: rgba(0, 0, 0, 0.9); display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px); }
+
+.carte-auth-sombre { background: #0a192f; border: 1px solid var(--bleu-neon); padding: 2rem; border-radius: 16px; width: 100%; max-width: 400px; position: relative; }
+.btn-fermer { position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--bleu-neon); font-size: 1.5rem; cursor: pointer; }
+.onglets-auth { display: flex; gap: 10px; margin-bottom: 20px; }
+.onglets-auth button { flex: 1; padding: 10px; background: transparent; border: 1px solid #555; color: white; cursor: pointer; border-radius: 8px; }
+.onglets-auth button.onglet-actif { background: var(--bleu-neon); color: #000; font-weight: bold; }
+
+.formulaire-sombre input, .formulaire-sombre select, .carte-action input, .carte-action textarea, .carte-action select {
+width: 100%; padding: 12px; margin-bottom: 10px;
+background: rgba(255,255,255,0.05); border: 1px solid #555;
+color: white; border-radius: 8px;
+}
+
+.bouton-principal { width: 100%; padding: 12px; background: var(--bleu-neon); color: #000; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; }
+
+.bandeau-defilant { width: 100%; max-width: 900px; overflow: hidden; position: relative; height: 50vh; margin: 0 auto 20px; border-radius: 16px; }
+.piste-defilante { display: flex; gap: 20px; height: 100%; width: max-content; animation: defilement 30s linear infinite; }
+.element-defilant { height: 100%; display: flex; flex-direction: column; background: rgba(10, 25, 47, 0.8); border-radius: 8px; padding: 15px; width: 80vw; max-width: 600px; position: relative; }
+.element-defilant img { width: 100%; height: 80%; object-fit: cover; border-radius: 6px; }
+.element-defilant p { text-align: center; font-weight: bold; margin-top: 10px; }
+.badge-pub { position: absolute; top: 25px; left: 25px; background: rgba(0,0,0,0.7); color: var(--texte-dore); padding: 5px 10px; border-radius: 4px; font-weight: bold; }
+@keyframes defilement { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 10px)); } }
+
+.carte-action { max-width: 900px; margin: 0 auto 20px; background: #0a192f; border: 1px solid #27272a; padding: 20px; border-radius: 12px; }
+#ai-chat-zone .msg-user { color: var(--texte-dore); text-align: right; margin-bottom: 8px; }
+#ai-chat-zone .msg-bot { color: var(--bleu-neon); margin-bottom: 8px; }
+#tbody-users th, #tbody-users td { padding: 10px; border-bottom: 1px solid #333; }
