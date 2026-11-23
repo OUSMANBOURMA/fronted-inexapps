@@ -1,304 +1,122 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>INEXAPPS - Un monde d'opportunités</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>INEXAPPS - Un monde d'opportunités</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="theme-espace">
 
-<!-- Sélecteur de langue -->
-<div class="langue-flottante">
-<select id="select-langue" class="select-langue-sombre">
-<option value="fr">🇫🇷 FR</option>
-<option value="en">🇬🇧 EN</option>
-<option value="ar">🇸🇦 AR</option>
-<option value="zh">🇨🇳 ZH</option>
-<option value="es">🇪🇸 ES</option>
-</select>
-</div>
+    <!-- ==================== INTERFACE 1 : VUE ACCUEIL ==================== -->
+    <main class="interface-accueil" id="vue-accueil">
+        <div class="conteneur-logo">
+            <!-- Remplace "logo.png" par le nom exact de ton image de globe avec les mains -->
+            <img src="logo.png" alt="INEXAPPS Logo" class="logo-image" onerror="this.src='https://via.placeholder.com/250x250/000000/007bff?text=INEX+LOGO'">
+            <h1 class="titre-inex">INEXAPPS</h1>
+            <p class="sous-titre-inex">Un monde d'opportunités en un clic</p>
+        </div>
 
-<!-- ==================== VUE ACCUEIL (Image 1) ==================== -->
-<main class="interface-accueil" id="vue-accueil">
-<div class="conteneur-logo">
-<!-- Remplacer par ton image locale : logo.png -->
-<img src="logo.png" alt="INEXAPPS Logo" class="logo-image" onerror="this.src='https://via.placeholder.com/200x200/000000/00b4d8?text=LOGO'">
-<h1 class="titre-inex">INEXAPPS</h1>
-<p class="sous-titre-inex">Un monde d'opportunités en un clic</p>
-<div class="ligne-separation"></div>
-</div>
+        <div class="conteneur-choix-acces">
+            <button type="button" class="bouton-acces-img" id="btn-visiteur">
+                <svg viewBox="0 0 24 24" fill="#007bff" class="icone-acces">
+                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                </svg>
+                <h3>VISITEUR</h3>
+                <p>Accéder à la plateforme<br>en tant que visiteur</p>
+            </button>
 
-<div class="conteneur-choix-acces">
-<!-- Bouton Visiteur -->
-<button type="button" class="bouton-acces-img" id="btn-visiteur">
-<svg viewBox="0 0 24 24" fill="none" stroke="#00b4d8" stroke-width="2" class="icone-acces-img">
-<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-<circle cx="12" cy="12" r="3"></circle>
-</svg>
-<h3>VISITEUR</h3>
-<p>Accéder à la plateforme<br>en tant que visiteur</p>
-</button>
+            <button type="button" class="bouton-acces-img" id="btn-utilisateur">
+                <svg viewBox="0 0 24 24" fill="#007bff" class="icone-acces">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                <h3>UTILISATEUR</h3>
+                <p>Accéder à son espace<br>personnel</p>
+            </button>
+        </div>
+    </main>
 
-<!-- Bouton Utilisateur -->
-<button type="button" class="bouton-acces-img" id="btn-utilisateur">
-<svg viewBox="0 0 24 24" fill="#00b4d8" class="icone-acces-img">
-<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-</svg>
-<h3>UTILISATEUR</h3>
-<p>Accéder à son espace<br>personnel</p>
-</button>
-</div>
-</main>
+    <!-- ==================== INTERFACE 2 : VUE VISITEUR ==================== -->
+    <section id="vue-plateforme" class="section-plateforme" hidden>
+        <div class="entete-plateforme">
+            <h2>Bienvenue sur INEXAPPS</h2>
+            <button id="btn-retour-accueil" class="bouton-secondaire-sombre">Retour</button>
+        </div>
+        
+        <!-- Le carrousel 3D -->
+        <div class="carrousel-container">
+            <div class="carrousel-item left"><img src="https://via.placeholder.com/300x150/333/fff?text=Opportunite" alt="1"></div>
+            <div class="carrousel-item center"><img src="https://via.placeholder.com/400x200/d4af37/fff?text=Premium" alt="2"></div>
+            <div class="carrousel-item right"><img src="https://via.placeholder.com/300x150/00b4d8/fff?text=Catalogue" alt="3"></div>
+        </div>
 
-<!-- ==================== VUE AUTHENTIFICATION ==================== -->
-<div id="zone-auth" class="section-auth-sombre" hidden>
-<div class="carte-auth-sombre">
-<button id="btn-fermer-auth" class="btn-fermer">✕</button>
-<h2 style="text-align:center; margin-bottom:20px;">Connexion / Inscription</h2>
-<div class="onglets-auth">
-<button id="tab-inscription" class="onglet-actif">S'inscrire</button>
-<button id="tab-connexion">Se connecter</button>
-</div>
-<form id="form-inscription" class="formulaire-sombre">
-<input type="email" id="reg-email" placeholder="Email" required>
-<input type="password" id="reg-password" placeholder="Mot de passe (10 car. min)" required minlength="10">
-<select id="reg-profile">
-<option value="particulier">Particulier</option>
-<option value="entreprise">Entreprise</option>
-</select>
-<button type="submit" class="bouton-principal">Créer mon compte</button>
-</form>
-<form id="form-connexion" class="formulaire-sombre" hidden>
-<input type="email" id="log-email" placeholder="Email" required>
-<input type="password" id="log-password" placeholder="Mot de passe" required>
-<button type="submit" class="bouton-principal">Me connecter</button>
-</form>
-<p id="message-auth" style="color:#e63946; text-align:center; margin-top:10px;"></p>
-</div>
-</div>
+        <div class="conteneur-auth-public">
+            <h3>Rejoignez-nous en tant que :</h3>
+            <div class="boutons-auth">
+                <button class="bouton-principal" onclick="ouvrirAuth('particulier')">Particulier</button>
+                <button class="bouton-principal" onclick="ouvrirAuth('entreprise')">Entreprise</button>
+            </div>
+        </div>
+    </section>
 
-<!-- ==================== VUE PLATEFORME VISITEUR ==================== -->
-<section id="vue-plateforme" class="section-plateforme" hidden>
-<div class="entete-plateforme" style="max-width:900px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:1px solid #333;">
-<h2>Bienvenue sur INEXAPPS</h2>
-<button id="btn-retour-accueil" class="bouton-secondaire-sombre">Retour</button>
-</div>
-<div style="text-align:center; margin:20px 0;">
-<h2 id="slogan-inex" style="color:#d4af37; font-size:1.2rem; font-weight:800;">VIVEZ L'EXPÉRIENCE UNIQUE AVEC INEXAPPS LA GRANDE FAMILLE</h2>
-<p id="texte-conformite" style="color:#a0b4c8; font-size:0.85rem; margin-top:10px;">L'AUTHENTIFICATION, CERTIFICATION ET CERTIFICATION+ LEUR AUTHENTICITÉ N'EST VÉRIFIABLE QUE DANS INEXAPPS POUR DES RAISONS DE CONFORMITÉ ET DE NON FRAUDE.</p>
-</div>
+    <!-- ==================== INTERFACE 3 : VUE MEMBRE / INEX CORE ==================== -->
+    <section id="vue-membre" class="section-membre" hidden>
+        <div class="entete-membre">
+            <h2>Mon Espace</h2>
+            <button class="bouton-deconnexion" id="btn-deconnexion">Déconnexion</button>
+        </div>
 
-<!-- Carrousel -->
-<div class="bandeau-defilant">
-<div class="piste-defilante">
-<div class="element-defilant"><span class="badge-pub">PUB</span><img src="https://via.placeholder.com/800x400/1d3557/ffffff?text=Catalogue" alt=""><p>Catalogue Entreprise A</p></div>
-<div class="element-defilant"><span class="badge-pub">PREMIUM</span><img src="https://via.placeholder.com/800x400/d4af37/ffffff?text=Premium" alt=""><p>Partenaire Premium</p></div>
-</div>
-</div>
-</section>
+        <!-- La grille des 8 espaces (Maquette 2) -->
+        <div class="grille-espaces">
+            <!-- 1. TRUST -->
+            <div class="carte-espace" data-espace="trust">
+                <svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+                <h3>INEX TRUST</h3><p>Identité et confiance</p>
+            </div>
+            <!-- 2. ADS -->
+            <div class="carte-espace" data-espace="ads">
+                <svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M3 11l18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg>
+                <h3>INEX ADS</h3><p>Publicité et visibilité</p>
+            </div>
+            <!-- 3. BUSINESS -->
+            <div class="carte-espace" data-espace="business">
+                <svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>
+                <h3>INEX BUSINESS</h3><p>Répertoire commercial</p>
+            </div>
+            <!-- 4. COMMUNITY -->
+            <div class="carte-espace" data-espace="community">
+                <svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <h3>INEX COMMUNITY</h3><p>Réseau des membres</p>
+            </div>
+            <!-- 5. OPPORTUNITY -->
+            <div class="carte-espace" data-espace="opportunity">
+                <svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg>
+                <h3>INEX OPPORTUNITY</h3><p>Opportunités d'affaires</p>
+            </div>
+            <!-- 6. GROUP -->
+            <div class="carte-espace" data-espace="group">
+                <svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <h3>INEX GROUP</h3><p>Opérations collectives</p>
+            </div>
+            <!-- 7. PARTNERSHIP -->
+            <div class="carte-espace" data-espace="partnership">
+                <svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M8 11h8"></path><path d="M12 7v8"></path></svg>
+                <h3>INEX PARTNERSHIP</h3><p>Partenariats commerciaux</p>
+            </div>
+            <!-- 8. MEDIATION -->
+            <div class="carte-espace" data-espace="mediation">
+                <svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M12 3v18"></path><path d="M3 7h18"></path><path d="M6 7l-3 6h6L6 7z"></path><path d="M18 7l-3 6h6l-3-6z"></path></svg>
+                <h3>INEX MEDIATION</h3><p>Facilitation des différends</p>
+            </div>
+        </div>
 
-<!-- ==================== VUE ESPACE MEMBRE (Image 2) ==================== -->
-<section id="vue-membre" class="section-membre" hidden>
-<div class="entete-membre">
-<h2>Mon Espace</h2>
-<button class="bouton-deconnexion" id="btn-deconnexion">Déconnexion</button>
-</div>
+        <!-- INEX CORE (Visible admin uniquement - caché par défaut) -->
+        <div class="carte-action" id="carte-core" hidden>
+            <!-- Le contenu de l'admin Gemini et Dashboard est géré dans le JS -->
+        </div>
+    </section>
 
-<!-- Grille 2x4 des espaces INEX -->
-<div class="grille-espaces">
-<!-- 1. TRUST -->
-<div class="carte-espace" data-espace="trust">
-<svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#00b4d8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
-<h3>INEX TRUST</h3>
-<p>Identité et confiance</p>
-</div>
-<!-- 2. ADS -->
-<div class="carte-espace" data-espace="ads">
-<svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#00b4d8" stroke-width="2"><path d="M3 11l18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg>
-<h3>INEX ADS</h3>
-<p>Publicité et visibilité</p>
-</div>
-<!-- 3. BUSINESS -->
-<div class="carte-espace" data-espace="business">
-<svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#00b4d8" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>
-<h3>INEX BUSINESS</h3>
-<p>Répertoire commercial</p>
-</div>
-<!-- 4. COMMUNITY -->
-<div class="carte-espace" data-espace="community">
-<svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#00b4d8" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-<h3>INEX COMMUNITY</h3>
-<p>Réseau des membres</p>
-</div>
-<!-- 5. OPPORTUNITY -->
-<div class="carte-espace" data-espace="opportunity">
-<svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#00b4d8" stroke-width="2"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg>
-<h3>INEX OPPORTUNITY</h3>
-<p>Opportunités d'affaires</p>
-</div>
-<!-- 6. GROUP -->
-<div class="carte-espace" data-espace="group">
-<svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#00b4d8" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-<h3>INEX GROUP</h3>
-<p>Opérations collectives</p>
-</div>
-<!-- 7. PARTNERSHIP -->
-<div class="carte-espace" data-espace="partnership">
-<svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#00b4d8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M8 11h8"></path><path d="M12 7v8"></path></svg>
-<h3>INEX PARTNERSHIP</h3>
-<p>Partenariats commerciaux</p>
-</div>
-<!-- 8. MEDIATION -->
-<div class="carte-espace" data-espace="mediation">
-<svg class="icone-espace" viewBox="0 0 24 24" fill="none" stroke="#00b4d8" stroke-width="2"><path d="M12 3v18"></path><path d="M3 7h18"></path><path d="M6 7l-3 6h6L6 7z"></path><path d="M18 7l-3 6h6l-3-6z"></path></svg>
-<h3>INEX MEDIATION</h3>
-<p>Facilitation des différends</p>
-</div>
-</div>
-
-<!-- ==================== FORMULAIRES CACHÉS ==================== -->
-
-<!-- INEX TRUST -->
-<div class="carte-action" id="action-trust" hidden>
-<h3>🛡️ INEX TRUST</h3>
-<p>Numéro INEX : <strong id="mon-numero-inex">Non créé</strong></p>
-<form id="form-creer-dossier">
-<input type="text" id="dossier-nom-complet" placeholder="Nom complet" required>
-<button type="submit" class="bouton-principal">Créer mon dossier</button>
-</form>
-</div>
-
-<!-- INEX ADS -->
-<div class="carte-action" id="carte-ads" hidden>
-<h3>📢 INEX ADS</h3>
-
-<!-- PIXABAY (Pour les utilisateurs) -->
-<div style="margin-bottom: 15px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
-<p style="font-size: 0.85rem; color: #a0b4c8; margin-bottom: 5px;">🔍 Chercher une image libre de droits (Pixabay)</p>
-<div style="display: flex; gap: 10px;">
-<input id="pixabay-query" placeholder="Ex: agriculture, business..." style="margin-bottom: 0;">
-<button type="button" onclick="chercherImagePixabay()" class="bouton-principal" style="width: 100px;">Chercher</button>
-</div>
-<div id="pixabay-results" style="display: flex; gap: 10px; overflow-x: auto; margin-top: 10px;"></div>
-</div>
-
-<form id="form-campagne">
-<input id="ads-titre" placeholder="Titre de la campagne" required>
-<input id="ads-url" placeholder="URL Média" required>
-<button type="submit" class="bouton-principal">Créer campagne</button>
-</form>
-</div>
-
-<!-- INEX BUSINESS -->
-<div class="carte-action" id="carte-business" hidden>
-<h3>🏢 INEX BUSINESS</h3>
-<form id="form-business">
-<input id="biz-nom" placeholder="Nom commercial" required>
-<input id="biz-secteur" placeholder="Secteur" required>
-<button type="submit" class="bouton-principal">Enregistrer</button>
-</form>
-</div>
-
-<!-- INEX COMMUNITY -->
-<div class="carte-action" id="carte-community" hidden>
-<h3>🗣️ INEX COMMUNITY</h3>
-<form id="form-publication">
-<textarea id="pub-contenu" placeholder="Partagez une actualité..." required></textarea>
-<button type="submit" class="bouton-principal">Publier</button>
-</form>
-</div>
-
-<!-- INEX OPPORTUNITY -->
-<div class="carte-action" id="carte-opportunity" hidden>
-<h3>💼 INEX OPPORTUNITY</h3>
-<form id="form-opportunite">
-<input id="opp-titre" placeholder="Titre" required>
-<textarea id="opp-desc" placeholder="Description" required></textarea>
-<button type="submit" class="bouton-principal">Publier</button>
-</form>
-</div>
-
-<!-- INEX GROUP -->
-<div class="carte-action" id="carte-group" hidden>
-<h3>👥 INEX GROUP</h3>
-<form id="form-operation">
-<input id="grp-titre" placeholder="Titre" required>
-<textarea id="grp-desc" placeholder="Description" required></textarea>
-<button type="submit" class="bouton-principal">Créer</button>
-</form>
-</div>
-
-<!-- INEX PARTNERSHIP -->
-<div class="carte-action" id="carte-partnership" hidden>
-<h3>🤝 INEX PARTNERSHIP</h3>
-<form id="form-partenariat">
-<input id="part-titre" placeholder="Titre" required>
-<textarea id="part-desc" placeholder="Description" required></textarea>
-<button type="submit" class="bouton-principal">Proposer</button>
-</form>
-</div>
-
-<!-- INEX MEDIATION -->
-<div class="carte-action" id="carte-mediation" hidden>
-<h3>⚖️ INEX MEDIATION</h3>
-<form id="form-mediation">
-<input id="med-sujet" placeholder="Sujet" required>
-<textarea id="med-desc" placeholder="Description" required></textarea>
-<button type="submit" class="bouton-principal">Demander</button>
-</form>
-</div>
-
-<!-- ==================== INEX CORE (ADMIN - CACHÉ) ==================== -->
-<div class="carte-action" id="carte-core" hidden style="border: 2px solid #e63946;">
-<h3>🛡️ INEX CORE (Admin)</h3>
-
-<div style="display:flex; gap:10px; margin-bottom:15px; flex-wrap:wrap;">
-<button onclick="switchTab('dash')" class="bouton-principal" style="flex:1;">Dashboard</button>
-<button onclick="switchTab('users')" class="bouton-principal" style="flex:1;">Utilisateurs</button>
-<button onclick="switchTab('ai')" class="bouton-principal" style="flex:1; background:#4ade80;">IA & Vocal</button>
-</div>
-
-<!-- Onglet Dashboard -->
-<div id="core-tab-dash">
-<div style="display:flex; gap:20px; margin-bottom:20px; flex-wrap:wrap;">
-<div style="flex:1; background:#1d3557; padding:15px; text-align:center; border-radius:8px;">
-<h4>Total Utilisateurs</h4><h2 id="stat-users">0</h2>
-</div>
-<div style="flex:1; background:#1d3557; padding:15px; text-align:center; border-radius:8px;">
-<h4>Solde Global INEX</h4><h2 id="stat-solde">0.00 $</h2>
-</div>
-</div>
-<canvas id="chartRevenus" height="100"></canvas>
-</div>
-
-<!-- Onglet Utilisateurs -->
-<div id="core-tab-users" hidden style="overflow-x:auto;">
-<table style="width:100%; text-align:left; color:white; border-collapse:collapse;">
-<thead>
-<tr style="border-bottom: 2px solid #555;">
-<th style="padding:10px;">Email</th>
-<th style="padding:10px;">Profil</th>
-<th style="padding:10px;">Solde</th>
-</tr>
-</thead>
-<tbody id="tbody-users"></tbody>
-</table>
-</div>
-
-<!-- Onglet IA -->
-<div id="core-tab-ai" hidden>
-<button id="btn-toggle-voice" style="background:#4ade80; color:#0a192f; border:none; padding:8px 15px; border-radius:20px; cursor:pointer; margin-bottom:10px;">🎤 Mode Vocal</button>
-<div id="ai-chat-zone" style="height:200px; overflow-y:auto; border:1px solid #444; padding:10px; border-radius:8px; margin-bottom:10px; background:rgba(0,0,0,0.2);"></div>
-<div style="display:flex; gap:10px;">
-<input id="ai-input" placeholder="Ex: Combien d'utilisateurs ?" style="flex:1; padding:10px; margin-bottom:0;">
-<button onclick="envoyerIA()" class="bouton-principal" style="width:120px;">Envoyer</button>
-</div>
-</div>
-</div>
-</section>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
