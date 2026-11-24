@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>INEXAPPS - Un monde d'opportunités</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-espace">
+
+<!-- Sélecteur de langue -->
+<div class="langue-flottante">
+  <select id="select-langue" class="select-langue-sombre" aria-label="Langue">
+    <option value="fr">🇫🇷 FR</option>
+    <option value="en">🇬🇧 EN</option>
+    <option value="ar">🇸🇦 AR</option>
+    <option value="zh">🇨🇳 ZH</option>
+    <option value="es">🇪🇸 ES</option>
+  </select>
+</div>
+
+<!-- ============ INTERFACE 1 : ACCUEIL ============ -->
+<main class="interface-accueil" id="vue-accueil">
+  <div class="conteneur-logo">
+    <img src="logo.png" alt="INEXAPPS" class="logo-image" id="logo-accueil">
+    <h1 class="titre-inex">INEXAPPS</h1>
+    <p class="sous-titre-inex" data-i18n="slogan">Un monde d'opportunités en un clic</p>
+    <div class="ligne-separation"></div>
+  </div>
+  <div class="conteneur-choix-acces">
+    <button type="button" class="bouton-acces-img" id="btn-visiteur">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#00b4d8" stroke-width="2" class="icone-acces-img"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      <h3 data-i18n="visiteur">VISITEUR</h3>
+      <p data-i18n="visiteur_desc">Accéder à la plateforme en tant que visiteur</p>
+    </button>
+    <button type="button" class="bouton-acces-img" id="btn-utilisateur">
+      <svg viewBox="0 0 24 24" fill="#00b4d8" class="icone-acces-img"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      <h3 data-i18n="utilisateur">UTILISATEUR</h3>
+      <p data-i18n="utilisateur_desc">Accéder à son espace personnel</p>
+    </button>
+  </div>
+</main>
+
+<!-- ============ INTERFACE 2 : PANNEAU PUBLICITAIRE + CHOIX DU PROFIL ============ -->
+<section id="vue-pub" class="vue-plein" hidden>
+  <div class="barre-haut"><button class="bouton-secondaire-sombre" id="btn-retour-pub" data-i18n="retour">Retour</button><h2 data-i18n="bienvenue">Bienvenue sur INEXAPPS</h2></div>
+  <div id="bandeau-annonces"></div>
+  <div class="panneau-pub" id="panneau-pub" aria-label="Publicité"></div>
+  <p class="question-profil" data-i18n="vous_etes">Vous êtes :</p>
+  <div class="choix-profil">
+    <button class="bouton-profil" data-profil="particulier"><span>👤</span><strong data-i18n="particulier">Particulier</strong></button>
+    <button class="bouton-profil" data-profil="entreprise"><span>🏢</span><strong data-i18n="entreprise">Entreprise</strong></button>
+  </div>
+</section>
+
+<!-- ============ AUTHENTIFICATION ============ -->
+<div id="zone-auth" class="section-auth-sombre" hidden>
+  <div class="carte-auth-sombre">
+    <button id="btn-fermer-auth" class="btn-fermer" aria-label="Fermer">✕</button>
+    <h2 style="text-align:center;margin-bottom:6px" data-i18n="connexion_inscription">Connexion / Inscription</h2>
+    <p id="auth-profil-info" class="petit" style="text-align:center;margin-bottom:14px"></p>
+    <div class="onglets-auth">
+      <button id="tab-inscription" class="onglet-actif" data-i18n="sinscrire">S'inscrire</button>
+      <button id="tab-connexion" data-i18n="seconnecter">Se connecter</button>
+    </div>
+    <form id="form-inscription" class="formulaire-sombre">
+      <input type="email" id="reg-email" placeholder="Email" autocomplete="email" required>
+      <input type="password" id="reg-password" placeholder="Mot de passe (10 car. min)" minlength="10" autocomplete="new-password" required>
+      <button type="submit" class="bouton-principal" data-i18n="creer_compte">Créer mon compte</button>
+    </form>
+    <form id="form-connexion" class="formulaire-sombre" hidden>
+      <input type="email" id="log-email" placeholder="Email" autocomplete="email" required>
+      <input type="password" id="log-password" placeholder="Mot de passe" autocomplete="current-password" required>
+      <button type="submit" class="bouton-principal" data-i18n="me_connecter">Me connecter</button>
+      <a href="#" id="lien-oubli" class="petit lien">Mot de passe oublié ?</a>
+    </form>
+    <form id="form-oubli" class="formulaire-sombre" hidden>
+      <input type="email" id="oubli-email" placeholder="Email" required>
+      <button type="button" id="btn-oubli-code" class="bouton-secondaire-sombre">Recevoir un code</button>
+      <input type="text" id="oubli-code" placeholder="Code reçu (6 chiffres)" inputmode="numeric">
+      <input type="password" id="oubli-mdp" placeholder="Nouveau mot de passe (10 car. min)" minlength="10">
+      <button type="submit" class="bouton-principal">Réinitialiser</button>
+    </form>
+    <p id="message-auth" class="msg-erreur"></p>
+  </div>
+</div>
+
+<!-- ============ VISITEUR : PLATEFORME PUBLIQUE ============ -->
+<section id="vue-plateforme" class="vue-plein" hidden>
+  <div class="barre-haut"><button class="bouton-secondaire-sombre" id="btn-retour-accueil" data-i18n="retour">Retour</button><h2 data-i18n="bienvenue">Bienvenue sur INEXAPPS</h2></div>
+  <div class="centre-texte">
+    <h2 class="slogan-dore" id="slogan-inex" data-i18n="slogan_fam">VIVEZ L'EXPÉRIENCE UNIQUE AVEC INEXAPPS LA GRANDE FAMILLE</h2>
+    <p class="petit" id="texte-conformite" data-i18n="conformite">L'AUTHENTIFICATION, CERTIFICATION ET CERTIFICATION+ LEUR AUTHENTICITÉ N'EST VÉRIFIABLE QUE DANS INEXAPPS POUR DES RAISONS DE CONFORMITÉ ET DE NON FRAUDE.</p>
+  </div>
+  <div class="carte-action" id="avant-propos"></div>
+  <h3 class="titre-section" data-i18n="categories">Catégories de services</h3>
+  <div class="grille-espaces" id="grille-publique"></div>
+  <h3 class="titre-section" data-i18n="tarifs">Tarifs applicables</h3>
+  <div class="carte-action" id="tarifs-visiteur"></div>
+  <div class="centre-texte"><button class="bouton-principal large" id="btn-vis-inscrire" data-i18n="sinscrire">S'inscrire</button></div>
+</section>
+
+<!-- ============ INTERFACE 3 : MON ESPACE ============ -->
+<section id="vue-membre" class="section-membre" hidden>
+  <div class="entete-membre">
+    <h2 data-i18n="mon_espace">Mon Espace</h2>
+    <div class="actions-entete">
+      <button class="icone-btn" id="btn-notif" aria-label="Notifications">🔔<span id="badge-notif" class="badge-notif" hidden>0</span></button>
+      <button class="icone-btn" id="btn-profil" aria-label="Profil">👤</button>
+      <button class="bouton-deconnexion" id="btn-deconnexion" data-i18n="deconnexion">Déconnexion</button>
+    </div>
+  </div>
+  <div id="alerte-email" class="carte-action alerte" hidden></div>
+  <div class="grille-espaces" id="grille-espaces"></div>
+  <div id="vue-espace" hidden>
+    <div class="barre-espace"><button class="bouton-secondaire-sombre" id="btn-retour-espaces" data-i18n="retour">Retour</button><h2 id="titre-espace"></h2></div>
+    <div id="bandeau-acces"></div>
+    <div id="contenu-espace"></div>
+  </div>
+</section>
+
+<!-- Profil privé (barre latérale compacte) -->
+<aside id="panneau-profil" class="panneau-profil" hidden>
+  <div class="entete-profil"><strong data-i18n="profil">Profil</strong><button class="btn-fermer" id="btn-fermer-profil" aria-label="Fermer">✕</button></div>
+  <div id="contenu-profil"></div>
+</aside>
+<div id="panneau-notif" class="panneau-notif" hidden></div>
+
+<!-- Vérification publique (scan du QR) -->
+<section id="vue-verif" class="vue-plein" hidden>
+  <div class="barre-haut"><button class="bouton-secondaire-sombre" id="btn-verif-retour" data-i18n="retour">Retour</button><h2>IDENTIFICATION IC</h2></div>
+  <div class="carte-action">
+    <p class="petit">Saisissez le nom exact figurant sur la fiche et le numéro officiel, puis cliquez sur VALIDER. La vérification d'existence est gratuite.</p>
+    <form id="form-verif" class="formulaire-sombre">
+      <input id="verif-nom" placeholder="Nom exact figurant sur la fiche" required>
+      <input id="verif-numero" placeholder="Numéro INEX (ex : INEX-2026-000125)" required>
+      <button class="bouton-principal" type="submit">VALIDER</button>
+    </form>
+    <div id="verif-resultat"></div>
+  </div>
+</section>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
