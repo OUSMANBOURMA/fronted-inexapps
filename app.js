@@ -2,8 +2,7 @@
 'use strict';
 
 // ======================================================================== Configuration
-const API_BASE = window.INEX_API_URL ||
-  ((location.protocol === 'file:' || ['5500', '3000', '8080'].includes(location.port)) ? 'http://localhost:8000' : 'https://inexapps-backend-g3a5.onrender.com');
+const API_BASE = window.INEX_API_URL || 'https://inexapps-backend-g3a5.onrender.com';
 const API = API_BASE + '/api';
 const $ = (id) => document.getElementById(id);
 const store = {
